@@ -37,6 +37,9 @@ best_performers = best_performers[best_performers['Score'] >= best_performers['S
 for ticker in best_performers['Ticker']:
     try:
         df = pd.read_csv(f'stock_data/{ticker}.csv', index_col=0)
+        
+        #Create a directory called "stock_data
+        
         moving_averages = [150, 200]
         for ma in moving_averages:
             df['SMA_' + str(ma)] = round(df['Adj Close'].rolling(window=ma).mean(), 2)
